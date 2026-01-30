@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STACKLY | Digital Marketing Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0b0f0c;
+  color: #fff;
+  overflow-x: hidden;
+  animation: pageFade 1s ease forwards;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.navbar.scrolled {
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  padding: 10px 5%;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+}
+.logo-text span { 
+  color: #a6ff00; 
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links nav {
+  display: flex;
+}
+
+.nav-links nav a {
+  margin: 0 15px;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+}
+.nav-links nav a:hover { color: #a6ff00; }
+
+.nav-btn {
+  background: #a6ff00;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+.nav-btn:hover {
+  box-shadow: 0 0 15px rgba(166,255,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+  background: #a6ff00;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+  background: #a6ff00;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 140px 5%;
+  min-height: 100vh;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 600px;
+  animation: fadeLeft 1.2s ease;
+}
+
+.badge {
+  background: #a6ff00;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: #a6ff00;
+  color: #000;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+}
+.primary-btn:hover {
+  box-shadow: 0 0 25px rgba(166,255,0,0.7);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #a6ff00;
+  padding: 14px 32px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  min-width: 160px;
+}
+.secondary-btn:hover {
+  background: rgba(166,255,0,0.1);
+  transform: translateY(-2px);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* GLOW */
+.glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: #a6ff00;
+  filter: blur(120px);
+  opacity: 0.25;
+  z-index: -1;
+}
+.glow-1 { top: 30%; left: 10%; }
+.glow-2 { bottom: 10%; right: 10%; }
+
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 5%;
+  background: #0f1511;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.stat {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+.stat h2 {
+  font-size: 40px;
+  color: #a6ff00;
+  margin-bottom: 10px;
+}
+.stat p {
+  color: #aaa;
+  font-size: 18px;
+}
+
+/* SECTION COMMON */
+.section {
+  padding: 80px 5%;
+}
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+/* ================= COOL ANIMATIONS ================= */
+
+/* Scroll Reveal Base */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Glow Hover */
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(166,255,0,0.3), transparent 70%);
+  opacity: 0;
+  transition: 0.4s;
+}
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+/* Client Logos */
+.clients {
+  background: #0f1511;
+  padding: 60px 5%;
+  overflow: hidden;
+}
+.client-track {
+  display: flex;
+  gap: 60px;
+  animation: scrollClients 25s linear infinite;
+}
+.client-track img {
+  height: 40px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.client-track img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scrollClients {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ABOUT */
+.about {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.about-content {
+  flex: 1;
+  min-width: 300px;
+}
+.about p {
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+}
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+}
+
+/* SERVICES */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  gap: 30px;
+}
+.service-card {
+  background: #121a14;
+  padding: 30px;
+  border-radius: 20px;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(166,255,0,0.2);
+}
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+/* PROCESS */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 30px;
+}
+.process-step {
+  background: #121a14;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+.process-step span {
+  color: #a6ff00;
+  font-size: 22px;
+  font-weight: 700;
+}
+.process-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+/* ================= PRO ANIMATIONS ================= */
+
+@keyframes pageFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Stagger Animation */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s ease;
+}
+.stagger.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+
+/* Skill Bars */
+.skills {
+  max-width: 800px;
+  margin: auto;
+}
+.skill {
+  margin-bottom: 25px;
+}
+.skill span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+.skill-bar {
+  height: 8px;
+  background: #1a241c;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #a6ff00, #76c700);
+  transition: width 1.5s ease;
+}
+
+/* Case Study */
+.case {
+  background: linear-gradient(135deg, #121a14, #0f1511);
+  padding: 40px;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Team */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 30px;
+}
+.team-card {
+  background: #121a14;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.4s;
+}
+.team-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 0 40px rgba(166,255,0,0.25);
+}
+.team-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid #a6ff00;
+}
+
+/* FAQ */
+.faq {
+  max-width: 800px;
+  margin: auto;
+}
+.faq-item {
+  background: #121a14;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.faq-item h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item h4::after {
+  content: '+';
+  font-size: 24px;
+  color: #a6ff00;
+  transition: 0.3s;
+}
+.faq-item.active h4::after {
+  content: '-';
+}
+.faq-item p {
+  display: none;
+  color: #aaa;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.faq-item.active p {
+  display: block;
+}
+.faq-item:hover {
+  background: #131d15;
+}
+
+
+/* TESTIMONIALS */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  gap: 30px;
+}
+.testimonial {
+  background: #121a14;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+}
+.testimonial img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.testimonial h4 { margin-top: 15px; color: #a6ff00; }
+
+/* NEWSLETTER */
+.newsletter {
+  text-align: center;
+  background: #0f1511;
+  border-radius: 20px;
+  padding: 50px 20px;
+}
+.newsletter h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.newsletter p {
+  color: #aaa;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.newsletter input {
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  max-width: 350px;
+  font-size: 16px;
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, #a6ff00, #76c700);
+  color: #000;
+  padding: 80px 5%;
+  text-align: center;
+  border-radius: 20px;
+  margin: 40px 5%;
+}
+.cta h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.cta p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* FOOTER */
+footer {
+  background: #0a0e0b;
+  padding: 60px 5% 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+footer p, footer a {
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1.6;
+}
+footer a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+footer a:hover { color: #a6ff00; }
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #666;
+  font-size: 14px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Image styling */
+.case-image img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.service-image {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.service-image img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+  
+  .section-title {
+    font-size: 32px;
+  }
+  
+  .case {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .hero-image {
+    justify-content: center;
+  }
+  
+  .hero-image img {
+    max-width: 400px;
+  }
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 5%;
+  }
+  
+  .logo-img {
+    height: 35px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(11, 15, 12, 0.95);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    padding: 80px 20px 40px;
+    z-index: 1000;
+  }
+  
+  .nav-links.active {
+    right: 0;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+  
+  .nav-links nav {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links nav a {
+    margin: 15px 0;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  
+  .nav-links nav a:hover {
+    background: rgba(166,255,0,0.1);
+  }
+  
+  .nav-btn {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 200px;
+  }
+  
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 5% 80px;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+  
+  .about {
+    flex-direction: column;
+  }
+  
+  .about-content, .about-image {
+    min-width: 100%;
+  }
+  
+  .about-image img {
+    max-width: 100%;
+  }
+  
+  .glow {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .case {
+    padding: 30px;
+  }
+  
+  .case h1 {
+    font-size: 36px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .newsletter input {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .stat h2 {
+    font-size: 32px;
+  }
+  
+  .cta h2 {
+    font-size: 28px;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 12px 24px;
+    min-width: 140px;
+    font-size: 14px;
+  }
+  
+  .service-card, .process-step, .team-card {
+    padding: 25px 20px;
+  }
+  
+  .faq-item {
+    padding: 15px;
+  }
+  
+  .testimonial {
+    padding: 25px 20px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .logo-img {
+    height: 30px;
+  }
+  
+  .logo-text {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo-container">
+    <!-- Replace with your actual logo image -->
+    <img src="./img/logo-removebg-preview.png" alt="STACKLY Logo" class="logo-img">
+    <div class="logo-text">S<span>TACKLY</span></div>
+  </div>
+  
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <div class="nav-links">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="./404.html">About</a>
+      <a href="./404.html">Services</a>
+      <a href="./404.html">Case Study</a>
+      <a href="./404.html">Team</a>
+      <a href="./404.html">Contact</a>
+    </nav>
+    <button class="nav-btn">Get Started</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="badge">Brand With Digital Marketing</span>
+    <h1>Digital Marketing<br>Solutions</h1>
+    <p>We help brands grow faster with data-driven marketing and creative strategy.</p>
+        <div class="cta-buttons">
+        <a href="./404.html"><button class="primary-btn">Get Started</button></a>
+      <a href="./404.html"><button class="secondary-btn">View Services</button></a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Marketing">
+  </div>
+
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+</section>
+
+<section class="stats">
+  <div class="stat"><h2 data-count="120">0+</h2><p>Projects</p></div>
+  <div class="stat"><h2 data-count="98">0%</h2><p>Satisfaction</p></div>
+  <div class="stat"><h2 data-count="15">0+</h2><p>Years Experience</p></div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About STACKLY</h2>
+  <div class="about">
+    <div class="about-content">
+      <p>STACKLY is a performance-driven digital marketing agency helping brands scale through SEO, paid ads, and creative digital strategies.</p>
+      <p>With over 15 years of experience, we've helped more than 120 clients achieve their digital goals through innovative strategies and data-driven approaches.</p>
+    </div>
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About STACKLY">
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="skills">
+  <h2 class="section-title">Our Expertise</h2>
+
+  <div class="skills">
+    <div class="skill">
+      <span><b>SEO Optimization</b><b>95%</b></span>
+      <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span><b>Paid Advertising</b><b>90%</b></span>
+      <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span><b>Social Media Marketing</b><b>92%</b></span>
+      <div class="skill-bar"><div class="skill-fill" data-width="92%"></div></div>
+    </div>
+
+    <div class="skill">
+      <span><b>Content Strategy</b><b>88%</b></span>
+      <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="case">
+  <h2 class="section-title">Case Study</h2>
+
+  <div class="case">
+    <div>
+      <h3>Scaling an E-Commerce Brand</h3>
+      <p>
+        We helped an online brand increase conversions and reduce ad spend using
+        data-driven SEO and paid marketing strategies.
+      </p>
+      <br>
+      <div class="case-image">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Case Study">
+      </div>
+      <br>
+      <button class="primary-btn">View Full Case</button>
+    </div>
+
+    <div>
+      <h1 style="color:#a6ff00;font-size:48px;">+320%</h1>
+      <p>Increase in Revenue</p><br>
+      <h1 style="color:#a6ff00;font-size:48px;">-45%</h1>
+      <p>Cost Per Acquisition</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="team">
+  <h2 class="section-title">Meet Our Team</h2>
+
+  <div class="team-grid stagger">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alex Morgan">
+      <h3>Alex Morgan</h3>
+      <p>Growth Strategist</p>
+    </div>
+
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Emily Stone">
+      <h3>Emily Stone</h3>
+      <p>SEO Specialist</p>
+    </div>
+
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ryan Patel">
+      <h3>Ryan Patel</h3>
+      <p>Paid Ads Manager</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h4>How long does it take to see results?</h4>
+      <p>SEO usually shows results in 3–6 months, while paid ads deliver faster ROI.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Do you work with startups?</h4>
+      <p>Yes! We work with startups, SMEs, and enterprise brands.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Is reporting transparent?</h4>
+      <p>Absolutely. You get clear performance reports and insights.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="services">
+  <h2 class="section-title">Why Choose STACKLY</h2>
+
+  <div class="service-grid">
+    <div class="service-card glow-card">
+      <div class="service-icon">📈</div>
+      <h3>Data-Driven Strategy</h3>
+      <p>Every decision is backed by analytics and real performance metrics.</p>
+    </div>
+
+    <div class="service-card glow-card">
+      <div class="service-icon">🎨</div>
+      <h3>Creative Excellence</h3>
+      <p>Designs and campaigns crafted to capture attention and convert.</p>
+    </div>
+
+    <div class="service-card glow-card">
+      <div class="service-icon">🚀</div>
+      <h3>Growth Focused</h3>
+      <p>We don't chase vanity metrics — only real business growth.</p>
+    </div>
+
+    <div class="service-card glow-card">
+      <div class="service-icon">📊</div>
+      <h3>Transparent Reporting</h3>
+      <p>Clear insights, honest results, no confusing jargon.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Our Services</h2>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>SEO Optimization</h3>
+      <p>Rank higher and grow organic traffic.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Social Media</h3>
+      <p>Engage and build loyal audiences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Paid Ads</h3>
+      <p>ROI-focused advertising campaigns.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <h3>Content Marketing</h3>
+      <p>Content that converts.</p>
+    </div>
+  </div>
+  
+  <div class="service-image">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Marketing Services">
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">How We Work</h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-icon">🔎</div>
+      <span>01</span>
+      <h3>Research</h3>
+      <p>Market analysis & competitor research</p>
+    </div>
+    <div class="process-step">
+      <div class="process-icon">🎯</div>
+      <span>02</span>
+      <h3>Strategy</h3>
+      <p>Customized marketing plan</p>
+    </div>
+    <div class="process-step">
+      <div class="process-icon">⚡</div>
+      <span>03</span>
+      <h3>Execution</h3>
+      <p>Campaign implementation</p>
+    </div>
+    <div class="process-step">
+      <div class="process-icon">📈</div>
+      <span>04</span>
+      <h3>Growth</h3>
+      <p>Optimization & scaling</p>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="client-track">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack">
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Testimonials</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial glow-card reveal">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sarah K">
+      <p>"STACKLY helped us triple our online leads in just 6 months. Their data-driven approach was exactly what we needed."</p>
+      <h4>— Sarah K, CEO of TechStart</h4>
+    </div>
+    <div class="testimonial glow-card reveal">
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="David R">
+      <p>"Outstanding performance marketing team. They transformed our digital presence and boosted ROI by 250%."</p>
+      <h4>— David R, Marketing Director</h4>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter section">
+  <h2>Subscribe to Our Newsletter</h2>
+  <p>Get the latest digital marketing tips and insights delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Enter your email">
+    <button class="primary-btn">Subscribe</button>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Ready to Grow Your Brand?</h2>
+  <p>Let's build something amazing together.</p>
+  <button class="primary-btn">Contact Us</button>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>STACKLY</h3>
+      <p>Digital marketing agency delivering measurable growth.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="./404.html">Home</a>
+      <a href="./404.html">About</a>
+      <a href="./404.html">Services</a>
+      <a href="./404.html">Contact</a>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <a href="./404.html">SEO</a>
+      <a href="./404.html">Social Media</a>
+      <a href="./404.html">Paid Ads</a>
+      <a href="./404.html">Content</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a href="./404.html">hello@STACKLY.com</a>
+      <a href="./404.html">+91 98765 43210</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 STACKLY. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+/* Hamburger Menu Toggle */
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  }
+});
+
+/* Navbar scroll effect */
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+/* Scroll Reveal + Stagger */
+const reveals = document.querySelectorAll('.reveal, .stagger');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+});
+
+/* Skill Bar Animation */
+const skillBars = document.querySelectorAll('.skill-fill');
+window.addEventListener('scroll', () => {
+  skillBars.forEach(bar => {
+    const top = bar.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      bar.style.width = bar.dataset.width;
+    }
+  });
+});
+
+/* FAQ Accordion */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    // Close other items
+    document.querySelectorAll('.faq-item').forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+      }
+    });
+    // Toggle current item
+    item.classList.toggle('active');
+  });
+});
+
+/* Counter Animation */
+const counters = document.querySelectorAll('[data-count]');
+counters.forEach(counter => {
+  const target = +counter.dataset.count;
+  const duration = 2000;
+  const increment = target / (duration / 16);
+  let current = 0;
+  
+  const updateCounter = () => {
+    if (current < target) {
+      current += increment;
+      counter.textContent = Math.ceil(current) + (counter.textContent.includes('%') ? '%' : '+');
+      setTimeout(updateCounter, 16);
+    } else {
+      counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
+    }
+  };
+  
+  window.addEventListener('scroll', () => {
+    const top = counter.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50 && !counter.dataset.animated) {
+      counter.dataset.animated = true;
+      updateCounter();
+    }
+  });
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
